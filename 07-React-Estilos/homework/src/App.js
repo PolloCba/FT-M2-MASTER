@@ -9,6 +9,12 @@ import s from './Card.module.css'
 function App() {
   return (
     <div className="App">
+      <div>
+        <SearchBar
+          onSearch={(ciudad) => alert(ciudad)}
+        />
+      </div>
+      <hr />
       <div className={s.global}>
         <Card
           max={Cairns.main.temp_max}
@@ -24,13 +30,7 @@ function App() {
           cities={data}
         />
       </div>
-      <hr />
-      <div>
-        <SearchBar
-          onSearch={(ciudad) => alert(ciudad)}
-        />
-      </div>
-    </div>
+   </div>
   );
 }
 

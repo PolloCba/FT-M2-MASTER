@@ -1,10 +1,16 @@
 .btn {
-    background-color: red;
+    background-color: #ed2d2d;
     width: 25px;
     border-radius: 10px;
     margin: 5px;
     color: white;
     align-self: flex-end;
+    cursor: pointer;
+}
+
+.btn:hover{
+    color: #ed2d2d;
+    background-color: white;
 }
 
 .global {
@@ -17,9 +23,11 @@
     flex-direction: column;
     align-items: center;
     border: 2px solid #6c757d;
-    width: 25%;
+    width: 300px;
+    height: 200px;
     border-radius: 10px;
     background-color: rgb(0 123 255 / 25%);
+    margin-bottom: 10px;
 }
 
 .cardTitle {
