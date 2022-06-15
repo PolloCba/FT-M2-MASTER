@@ -1,6 +1,6 @@
 //(function () {
 
-  window.EventEmitter = EventEmitter;
+  //window.EventEmitter = EventEmitter;
 
   // our EventEmitter constructor function
   function EventEmitter () {
