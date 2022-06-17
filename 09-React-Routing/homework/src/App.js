@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
 import Cards from './components/Cards.jsx';
-import SearchBar from './components/SearchBar.jsx';
 import Nav from './components/Nav.jsx';
+import { Route } from 'react-router-dom';
+import About from './components/About.jsx';
+import Ciudad from './components/Ciudad.jsx';
 
 const API_KEY = "7255db7793802f2a696a5c4e2a1e9b45"
 
@@ -53,20 +55,48 @@ export default function App() {
       });
 
     }
+
+    function onFilter(ciudadId) {
+      const cityToSearch = cities.find(
+        function(ciudad){
+          return ciudad.id = parseInt(ciudadId)
+        }
+      )
+      // if(cityToSearch){
+      //   return cityToSearch;
+      // }else{
+      //   return null;
+      // }
+      //return cityToSearch ? cityToSearch : undefined;
+      return cityToSearch;
+    }
   
     return (
-    <div className="App">
-    <div>
-      <Nav />
-        <SearchBar
-          onSearch={onSearch}
-        />
-      </div>
+      <div className="App">
+         <div>
+          <Nav onSearch={onSearch}/>
+         </div>
       <div>
-        <Cards
-          cities={cities} onRemove={removeCity} 
-        />
+        <Route
+         exact 
+         path="/"
+         render={()=> <Cards cities={cities} onRemove={removeCity}/>}
+         />
       </div>
-   </div>
-  );
-}
+      <Route
+         path='/about'
+         component={About}
+         /> 
+         <Route 
+         path="/ciudad/:ciudad.Id"
+         render={function (props){
+           return <Ciudad 
+           ciudad={
+           onFilter(props.match.params.ciudadId)
+          }
+           />
+         }} 
+         />
+      </div>
+    );
+  }

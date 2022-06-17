@@ -1,28 +1,27 @@
 import React from 'react';
-import './Card.css';
+import s from './Card.module.css'
 
-export default function Card ({min, max, name, img, onClose, id}) {
-    return (
-      <div className="card">
-        <div id="closeIcon" className="row">
-            <button onClick={onClose} className="btn btn-sm btn-danger">X</button>
+export default function Card({max ,min, name, img, onClose}) {
+  // acá va tu código
+  return (
+  <div className={s.principal}>
+    <button onClick={onClose} className={s.btn}>X</button>
+      <div>
+        <span className={s.cardTitle}>{name}</span>
+      </div>
+      <div className= {s.medio}>
+        <div className={s.temp}>
+          <span className={s.tempName}>Min</span>
+          <span className={s.minTemp}>{min}</span>
         </div>
-        <div className="card-body">
-          <h5 className="card-title">{name}</h5>
-          <div className="row">
-            <div className="col-sm-4 col-md-4 col-lg-4">
-              <p>Min</p>
-              <p>{min}°</p>
-            </div>
-            <div className="col-sm-4 col-md-4 col-lg-4">
-              <p>Max</p>
-              <p>{max}°</p>
-            </div>
-            <div className="col-sm-4 col-md-4 col-lg-4">
-              <img className="iconoClima" src={"http://openweathermap.org/img/wn/"+img+"@2x.png"} width="80" height="80" alt="" />
-            </div>
-          </div>
+        <div className={s.temp}>
+          <span className={s.tempName}>Max</span>
+          <span className={s.maxTemp}>{max}</span>
+        </div>
+        <div>
+          <img src={`http://openweathermap.org/img/wn/${img}@2x.png`} alt={`clima-${img}`}/>
         </div>
       </div>
-    );
+  </div>
+  )
 };
